@@ -1,4 +1,4 @@
-package com.bivgroup.broker.zoo;
+package com.bivgroup.broker.test.zoo;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
