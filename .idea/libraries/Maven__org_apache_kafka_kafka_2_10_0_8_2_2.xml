@@ -8,6 +8,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka_2.10/0.8.2.2/kafka_2.10-0.8.2.2-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka_2.10/0.8.2.2/kafka_2.10-0.8.2.2-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

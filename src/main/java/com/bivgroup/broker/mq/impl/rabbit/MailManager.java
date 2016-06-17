@@ -23,6 +23,7 @@ public class MailManager extends AbstractMessageManager {
 
     @Override
     public Object getMessage() throws IOException {
+        channel.basicGet(EXCHANGE_NAME, true);
         return null;
     }
 
