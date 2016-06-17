@@ -50,10 +50,14 @@
     </repositories>
 
     <properties>
-        <kafka.version>0.8.2.2</kafka.version>
         <jdk.version>1.7</jdk.version>
         <test.skip>false</test.skip>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <kafka.version>0.8.2.2</kafka.version>
+        <rabbitmq.version>3.0.4</rabbitmq.version>
+        <curator.version>2.8.0</curator.version>
+        <cdi.version>1.2</cdi.version>
+        <weld.version>2.3.3.Final</weld.version>
     </properties>
     <profiles>
         <profile>
@@ -92,7 +96,7 @@
                         <artifactId>maven-compiler-plugin</artifactId>
                         <version>3.0</version>
                         <configuration>
-                            <encoding>UTF-8</encoding>
+                            <encoding>${project.build.sourceEncoding}</encoding>
                             <source>${jdk.version}</source>
                             <target>${jdk.version}</target>
                         </configuration>
@@ -143,9 +147,9 @@
                         </executions>
                         <configuration>
                             <show>private</show>
-                            <charset>UTF-8</charset>
-                            <encoding>UTF-8</encoding>
-                            <docencoding>UTF-8</docencoding>
+                            <charset>${project.build.sourceEncoding}</charset>
+                            <encoding>${project.build.sourceEncoding}</encoding>
+                            <docencoding>${project.build.sourceEncoding}</docencoding>
                             <!--<argLine>-Dfile.encoding=UTF-8</argLine>-->
                             <destDir>${project.build.directory}/apidocs/v${project.version}</destDir>
                         </configuration>
@@ -168,33 +172,28 @@
     <!--</distributionManagement>-->
 
     <dependencies>
-        <!-- Kafka -->
-
+        <!-- Библиотеки Kafka -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka_2.10</artifactId>
             <version>${kafka.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
             <version>${kafka.version}</version>
         </dependency>
-
+        <!--Библиотеки rabbitmq-->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>${rabbitmq.version}</version>
         </dependency>
-
-
-        <!-- zookeeper client -->
+        <!--Библиотеки zookeeper client -->
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>
-            <version>2.8.0</version>
+            <version>${curator.version}</version>
             <optional>true</optional>
             <scope>provided</scope>
         </dependency>
@@ -208,12 +207,12 @@
         <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
-            <version>1.2</version>
+            <version>${cdi.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.weld.se</groupId>
             <artifactId>weld-se</artifactId>
-            <version>2.3.3.Final</version>
+            <version>${weld.version}</version>
         </dependency>
         <!--Общие Библиотеки-->
         <dependency>
@@ -225,6 +224,18 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
