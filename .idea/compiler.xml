@@ -24,9 +24,17 @@
         <processorPath useClasspath="true" />
         <module name="brocker-client" />
       </profile>
+      <profile default="false" name="Annotation profile for broker-client" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="broker-client" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="brocker-client" target="1.7" />
+      <module name="broker-client" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
