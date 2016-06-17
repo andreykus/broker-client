@@ -1,6 +1,6 @@
 package com.bivgroup.broker.test.zoo;
 
-import com.bivgroup.broker.test.utils.WeldJUnit4Runner;
+import com.bivgroup.test.utils.WeldJUnit4Runner;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
