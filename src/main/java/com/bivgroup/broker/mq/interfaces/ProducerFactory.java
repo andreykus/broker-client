@@ -1,4 +1,3 @@
-
 package com.bivgroup.broker.mq.interfaces;
 
 
@@ -7,7 +6,6 @@ import com.bivgroup.broker.exceptions.MessageException;
 /**
  * <p>Title: ProducerFactory</p>
  * <p>Description: </p>
- *
  */
 public interface ProducerFactory {
 

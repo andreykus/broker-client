@@ -7,4 +7,6 @@ import java.util.Properties;
  */
 public interface Config {
     public Properties getProperties();
+
+    public void setProperties();
 }

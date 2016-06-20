@@ -1,4 +1,4 @@
-package com.bivgroup.broker.mq.impl.kafka.producer;
+package com.bivgroup.broker.mq.impl.kafka.message;
 
 import kafka.producer.Partitioner;
 import kafka.utils.VerifiableProperties;

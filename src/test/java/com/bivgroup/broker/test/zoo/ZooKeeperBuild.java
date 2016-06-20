@@ -24,7 +24,7 @@ public class ZooKeeperBuild {
             public void eventReceived(CuratorFramework client, CuratorEvent event) throws Exception {
                 System.out.println("++++++++++++");
                 //System.out.println(event.getData());
-               // System.out.println(event.getContext());
+                // System.out.println(event.getContext());
                 System.out.println(event.getType());
                 System.out.println("+++++++++++++");
             }
@@ -41,7 +41,6 @@ public class ZooKeeperBuild {
         //curator.create().forPath("/test_node", "".getBytes());
 
 
-
         curator.setData().forPath("/test_node", "1".getBytes());
         //System.out.println(curator.getData().forPath("/test_node"));
         curator.getChildren().watched().forPath("/test_node");
@@ -50,7 +49,7 @@ public class ZooKeeperBuild {
         System.out.println(curator.getData().forPath("/test_node"));
         curator.setData().inBackground().forPath("/test_node", "311".getBytes());
         System.out.println(curator.getData().forPath("/test_node"));
-        curator.getData().usingWatcher(new CuratorWatcher(){
+        curator.getData().usingWatcher(new CuratorWatcher() {
             @Override
             public void process(WatchedEvent event) throws Exception {
                 System.out.println("-------------");
@@ -63,11 +62,13 @@ public class ZooKeeperBuild {
         curator.setData().inBackground().forPath("/test_node", "32".getBytes());
         //System.out.println(curator.getData().forPath("/test_node"));
         curator.setData().inBackground().forPath("/test_node", "321".getBytes());
-       // System.out.println(curator.getData().forPath("/test_node"));
+        // System.out.println(curator.getData().forPath("/test_node"));
         curator.setData().inBackground().forPath("/test_node", "322".getBytes());
         //System.out.println(curator.getData().forPath("/test_node"));
         curator.close();
-    };
+    }
+
+    ;
 }
 
 

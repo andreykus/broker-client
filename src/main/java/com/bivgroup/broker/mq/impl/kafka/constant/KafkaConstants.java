@@ -1,4 +1,3 @@
-
 package com.bivgroup.broker.mq.impl.kafka.constant;
 
 

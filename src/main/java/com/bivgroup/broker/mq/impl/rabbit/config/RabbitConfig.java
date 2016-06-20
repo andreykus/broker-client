@@ -7,6 +7,7 @@ import java.util.Properties;
 /**
  * Created by bush on 20.06.2016.
  */
+
 public class RabbitConfig implements Config {
     Properties prop;
 
@@ -18,4 +19,12 @@ public class RabbitConfig implements Config {
         }
         return prop;
     }
+
+    @Override
+    public void setProperties() {
+        if (this.prop == null) {
+            this.prop = new Properties();
+        }
+    }
+
 }

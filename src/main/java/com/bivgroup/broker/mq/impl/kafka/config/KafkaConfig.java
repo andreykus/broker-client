@@ -8,6 +8,7 @@ import java.util.Properties;
 /**
  * Created by bush on 20.06.2016.
  */
+
 public class KafkaConfig implements Config {
     Properties prop;
 
@@ -18,5 +19,12 @@ public class KafkaConfig implements Config {
             this.prop.setProperty(KafkaConstants.BROKER_LIST, "");
         }
         return prop;
+    }
+
+    @Override
+    public void setProperties() {
+        if (this.prop == null) {
+            this.prop = new Properties();
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.bivgroup.broker.mq.impl.kafka.producer;
+package com.bivgroup.broker.mq.impl.kafka.message;
 
 /**
  * Created by bush on 20.06.2016.
@@ -9,10 +9,6 @@ import org.apache.kafka.common.serialization.Serializer;
 
 import java.nio.ByteBuffer;
 import java.util.Map;
-
-/**
- * Created by bush on 20.06.2016.
- */
 
 
 public class CustomerSerializer implements Serializer<Customer> {

@@ -1,5 +1,8 @@
 package com.bivgroup.broker.mq.impl.kafka.producer;
 
+import com.bivgroup.broker.mq.MessageConfigProvider;
+import com.bivgroup.broker.mq.MessageConfigType;
+import com.bivgroup.config.Config;
 import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
@@ -8,6 +11,7 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 
+import javax.inject.Inject;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
@@ -17,6 +21,10 @@ import static com.bivgroup.broker.mq.impl.kafka.constant.KafkaConstants.PARTITIO
  * Created by bush on 20.06.2016.
  */
 public class KafkaProducerNew {
+
+    @Inject
+    @MessageConfigProvider(type = MessageConfigType.KAFKA)
+    public Config config;
 
     private class DemoProducerCallback implements Callback {
         @Override
@@ -32,9 +40,11 @@ public class KafkaProducerNew {
 
         //1
         KafkaProducer<Integer, String> producer1 = new KafkaProducer<Integer,
-                String>(properties);
+                String>(config.getProperties());
         ProducerRecord<Integer, String> record = new ProducerRecord<Integer,
                 String>("mytesttopic", "mess");
+
+
         producer1.send(record);
 
         RecordMetadata rez = producer1.send(record).get();
@@ -44,7 +54,7 @@ public class KafkaProducerNew {
         producer1.close();
 
         //2
-        Producer<Integer, String> producer = new Producer<>(new ProducerConfig(properties));
+        Producer<Integer, String> producer = new Producer<>(new ProducerConfig(config.getProperties()));
         KeyedMessage<Integer, String> data = new KeyedMessage<>("mytesttopic", "mess");
         producer.send(data);
         producer.close();
