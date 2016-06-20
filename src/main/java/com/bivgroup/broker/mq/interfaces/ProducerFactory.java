@@ -6,11 +6,8 @@ import com.bivgroup.broker.exceptions.MessageException;
 
 /**
  * <p>Title: ProducerFactory</p>
- * <p>Description: 生产者工厂接口</p>
+ * <p>Description: </p>
  *
- * @author Victor.Zxy
- * @version 1.0
- * @since 2015-06-01
  */
 public interface ProducerFactory {
 

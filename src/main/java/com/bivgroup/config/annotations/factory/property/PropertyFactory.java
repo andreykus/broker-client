@@ -1,13 +1,13 @@
-package com.bivgroup.broker.annotations.factory.property;
+package com.bivgroup.config.annotations.factory.property;
 
 /**
  * Created by bush on 12.05.2016.
  */
 
-import com.bivgroup.broker.annotations.LoggerProvider;
-import com.bivgroup.broker.annotations.PropertyProvider;
-import com.bivgroup.broker.annotations.types.LoggerType;
-import com.bivgroup.broker.annotations.types.PropertyFiles;
+import com.bivgroup.config.annotations.LoggerProvider;
+import com.bivgroup.config.annotations.PropertyProvider;
+import com.bivgroup.config.annotations.types.LoggerType;
+import com.bivgroup.config.annotations.types.PropertyFiles;
 import com.bivgroup.broker.exceptions.MessageException;
 import org.apache.logging.log4j.Logger;
 

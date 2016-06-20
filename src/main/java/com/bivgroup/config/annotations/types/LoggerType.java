@@ -1,4 +1,4 @@
-package com.bivgroup.broker.annotations.types;
+package com.bivgroup.config.annotations.types;
 
 /**
  * Created by bush on 12.05.2016.

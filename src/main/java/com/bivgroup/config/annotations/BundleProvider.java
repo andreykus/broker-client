@@ -1,6 +1,6 @@
-package com.bivgroup.broker.annotations;
+package com.bivgroup.config.annotations;
 
-import com.bivgroup.broker.annotations.types.OutSystem;
+import com.bivgroup.config.annotations.types.LocaleType;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.Retention;
@@ -10,11 +10,11 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * Created by bush on 11.05.2016.
+ * Created by bush on 12.05.2016.
  */
 @Qualifier
 @Retention(RUNTIME)
 @Target({METHOD, FIELD, PARAMETER, TYPE})
-public @interface BlProvider {
-    OutSystem type() default OutSystem.DOTNET;
+public @interface BundleProvider {
+    LocaleType type() default LocaleType.RU;
 }

@@ -5,7 +5,4 @@
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
         bean-discovery-mode="all">
-    <alternatives>
-        <class>com.bivgroup.meweb.soglife.external.impl.dotnet.MeWebDotNetExternalMethodImpl</class>
-    </alternatives>
 </beans>

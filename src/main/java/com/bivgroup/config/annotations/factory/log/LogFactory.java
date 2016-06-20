@@ -1,11 +1,11 @@
-package com.bivgroup.broker.annotations.factory.log;
+package com.bivgroup.config.annotations.factory.log;
 
 /**
  * Created by bush on 12.05.2016.
  */
 
-import com.bivgroup.broker.annotations.LoggerProvider;
-import com.bivgroup.broker.annotations.types.LoggerType;
+import com.bivgroup.config.annotations.LoggerProvider;
+import com.bivgroup.config.annotations.types.LoggerType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

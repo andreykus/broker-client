@@ -1,6 +1,6 @@
-package com.bivgroup.broker.annotations;
+package com.bivgroup.config.annotations;
 
-import com.bivgroup.broker.annotations.types.PropertyFiles;
+import com.bivgroup.config.annotations.types.PropertyFiles;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.Retention;

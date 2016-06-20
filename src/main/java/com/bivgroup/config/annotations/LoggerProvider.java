@@ -1,6 +1,6 @@
-package com.bivgroup.broker.annotations;
+package com.bivgroup.config.annotations;
 
-import com.bivgroup.broker.annotations.types.LocaleType;
+import com.bivgroup.config.annotations.types.LoggerType;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.Retention;
@@ -15,6 +15,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Qualifier
 @Retention(RUNTIME)
 @Target({METHOD, FIELD, PARAMETER, TYPE})
-public @interface BundleProvider {
-    LocaleType type() default LocaleType.RU;
+public @interface LoggerProvider {
+    LoggerType type() default LoggerType.Log4J;
 }

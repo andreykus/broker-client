@@ -1,13 +1,13 @@
-package com.bivgroup.broker.annotations.factory.locale;
+package com.bivgroup.config.annotations.factory.locale;
 
 /**
  * Created by bush on 12.05.2016.
  */
 
-import com.bivgroup.broker.annotations.BundleProvider;
-import com.bivgroup.broker.annotations.LoggerProvider;
-import com.bivgroup.broker.annotations.types.LocaleType;
-import com.bivgroup.broker.annotations.types.LoggerType;
+import com.bivgroup.config.annotations.BundleProvider;
+import com.bivgroup.config.annotations.LoggerProvider;
+import com.bivgroup.config.annotations.types.LocaleType;
+import com.bivgroup.config.annotations.types.LoggerType;
 import org.apache.logging.log4j.Logger;
 
 import javax.enterprise.inject.Produces;
