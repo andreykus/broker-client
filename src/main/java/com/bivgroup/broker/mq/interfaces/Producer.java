@@ -4,8 +4,10 @@ import com.bivgroup.broker.exceptions.MessageException;
 
 public interface Producer<T> {
 
-    public abstract void send(T message) throws MessageException;
+    void send(T message) throws MessageException;
 
-    public abstract String getProducerKey() throws MessageException;
+    String getProducerKey() throws MessageException;
+
+    void close() throws MessageException;
 
 }

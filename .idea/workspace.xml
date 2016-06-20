@@ -2,26 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="218e9d7f-5f8a-483a-8e40-2994872f4ddd" name="Default" comment="add kafka &#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/KafkaProducerFactory.java" />
-      <change type="MOVED" beforePath="C:\projects\broker-client\src\main\java\com\bivgroup\broker\mq\impl\kafka\producer\BananaPartitioner.javatest" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/message/BananaPartitioner.javatest" />
-      <change type="MOVED" beforePath="C:\projects\broker-client\src\main\java\com\bivgroup\broker\mq\impl\kafka\producer\Customer.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/message/Customer.java" />
-      <change type="MOVED" beforePath="C:\projects\broker-client\src\main\java\com\bivgroup\broker\mq\impl\kafka\producer\CustomerSerializer.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/message/CustomerSerializer.java" />
-      <change type="MOVED" beforePath="C:\projects\broker-client\src\main\java\com\bivgroup\broker\mq\impl\kafka\producer\SimplePartitioner.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/message/SimplePartitioner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/bivgroup/config/Config.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/config/Config.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/bivgroup/config/ConfigFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/config/ConfigFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/Consumer.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/Consumer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/ConsumerFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/ConsumerFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/config/KafkaConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/config/KafkaConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/config/KafkaConfigFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/config/KafkaConfigFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/constant/KafkaConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/constant/KafkaConstants.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/callback/DemoProducerCallback.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/KafkaProducerNew.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/KafkaProducerNew.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/MessageConfigProvider.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/MessageConfigProvider.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/Producer.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/Producer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/ProducerFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/ProducerFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/bivgroup/config/annotations/factory/property/PropertyFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/config/annotations/factory/property/PropertyFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/rabbit/config/RabbitConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/rabbit/config/RabbitConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/bivgroup/broker/test/zoo/ZooKeeperBuild.java" afterPath="$PROJECT_DIR$/src/test/java/com/bivgroup/broker/test/zoo/ZooKeeperBuild.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="brocker-client.iws" />
@@ -55,18 +38,52 @@
                 <element signature="imports" expanded="true" />
                 <element signature="e#625#626#0" expanded="true" />
                 <element signature="e#659#660#0" expanded="true" />
-                <element signature="e#707#708#0" expanded="true" />
-                <element signature="e#747#748#0" expanded="true" />
+                <element signature="e#706#707#0" expanded="true" />
+                <element signature="e#746#747#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KafkaProducerNew.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="KafkaProducerNew.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/KafkaProducerNew.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.109612145">
+              <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1244#1277#0" expanded="true" />
+                <element signature="e#1370#1403#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Producer.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka_2.10/0.8.2.2/kafka_2.10-0.8.2.2.jar!/kafka/javaapi/producer/Producer.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.296296">
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Config.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/config/Config.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="85" selection-start-line="56" selection-start-column="85" selection-end-line="56" selection-end-column="85" />
+              <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DemoProducerCallback.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/callback/DemoProducerCallback.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -74,11 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KafkaProducerFactory.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="KafkaProducerFactory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/KafkaProducerFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14358108">
-              <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -94,23 +111,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomerSerializer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/message/CustomerSerializer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Producer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/Producer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="25" />
+              <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -134,26 +139,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RabbitConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/rabbit/config/RabbitConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RabbitConfigFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/rabbit/config/RabbitConfigFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -187,7 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/annotations/PropertyProvider.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/annotations/LoggerProvider.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/annotations/BundleProvider.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/annotations/BlProvider.java" />
@@ -207,7 +191,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/rabbit/AbstractMessageManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/Consumer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/rabbit/MailManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/Producer.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/ConsumerFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/ProducerFactory.java" />
@@ -235,9 +218,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/config/Config.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/config/KafkaConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/rabbit/config/RabbitConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/KafkaProducerNew.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/CustomerSerializer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/message/CustomerSerializer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/callback/DemoProducerCallback.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/Producer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/KafkaProducerNew.java" />
       </list>
     </option>
   </component>
@@ -313,8 +298,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="38" />
-    <option name="y" value="16" />
+    <option name="x" value="-64" />
+    <option name="y" value="4" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -1225,6 +1210,56 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="producer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="callback" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="brocker-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="broker-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bivgroup" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="broker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kafka" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="message" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1752,7 +1787,7 @@
       <workItem from="1466081317942" duration="5618000" />
       <workItem from="1466144901873" duration="5601000" />
       <workItem from="1466151655050" duration="13588000" />
-      <workItem from="1466404213263" duration="14749000" />
+      <workItem from="1466404213263" duration="15968000" />
     </task>
     <task id="LOCAL-00001" summary="qqqqqqqqq">
       <created>1466150110546</created>
@@ -1832,14 +1867,20 @@
       <option name="project" value="LOCAL" />
       <updated>1466423824922</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="add kafka &#10;">
+      <created>1466427654378</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1466427654378</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39556000" />
+    <option name="totallyTimeSpent" value="40775000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="38" y="16" width="1936" height="1056" extended-state="0" />
+    <frame x="-64" y="4" width="1936" height="1056" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1853,13 +1894,13 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32864866" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3027027" sideWeight="0.49573562" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23454158" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23454158" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32972974" sideWeight="0.49520257" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.49520257" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.4946695" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1962,13 +2003,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/curator/curator-framework/2.8.0/curator-framework-2.8.0-sources.jar!/org/apache/curator/framework/imps/CreateBuilderImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.275862">
-          <caret line="837" column="34" selection-start-line="837" selection-start-column="27" selection-end-line="837" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/16.0.1/guava-16.0.1-sources.jar!/com/google/common/collect/Iterables.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2256,8 +2290,8 @@
         <state vertical-scroll-proportion="0.3733108">
           <caret line="62" column="48" selection-start-line="62" selection-start-column="48" selection-end-line="62" selection-end-column="48" />
           <folding>
-            <element signature="e#6605#6606#0" expanded="true" />
-            <element signature="e#6669#6670#0" expanded="true" />
+            <element signature="e#6605#6606#0" expanded="false" />
+            <element signature="e#6669#6670#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2270,26 +2304,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka_2.10/0.8.2.2/kafka_2.10-0.8.2.2.jar!/kafka/javaapi/producer/Producer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34867257">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/config/ConfigFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/config/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
           <folding />
         </state>
       </provider>
@@ -2328,16 +2346,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/KafkaProducerNew.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="85" selection-start-line="56" selection-start-column="85" selection-end-line="56" selection-end-column="85" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/config/KafkaConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2356,8 +2364,8 @@
             <element signature="imports" expanded="true" />
             <element signature="e#625#626#0" expanded="true" />
             <element signature="e#659#660#0" expanded="true" />
-            <element signature="e#707#708#0" expanded="true" />
-            <element signature="e#747#748#0" expanded="true" />
+            <element signature="e#706#707#0" expanded="true" />
+            <element signature="e#746#747#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2370,19 +2378,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/Producer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/KafkaProducerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="25" />
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/KafkaProducerFactory.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/config/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14358108">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/interfaces/Producer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/callback/DemoProducerCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka_2.10/0.8.2.2/kafka_2.10-0.8.2.2.jar!/kafka/javaapi/producer/Producer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.296296">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/bivgroup/broker/mq/impl/kafka/producer/KafkaProducerNew.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.109612145">
+          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1244#1277#0" expanded="true" />
+            <element signature="e#1370#1403#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

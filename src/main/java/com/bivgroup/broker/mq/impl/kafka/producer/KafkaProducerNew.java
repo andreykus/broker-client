@@ -1,12 +1,14 @@
 package com.bivgroup.broker.mq.impl.kafka.producer;
 
+import com.bivgroup.broker.exceptions.MessageException;
 import com.bivgroup.broker.mq.MessageConfigProvider;
 import com.bivgroup.broker.mq.MessageConfigType;
+import com.bivgroup.broker.mq.impl.kafka.producer.callback.DemoProducerCallback;
+import com.bivgroup.broker.mq.interfaces.Message;
 import com.bivgroup.config.Config;
 import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
-import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
@@ -20,23 +22,17 @@ import static com.bivgroup.broker.mq.impl.kafka.constant.KafkaConstants.PARTITIO
 /**
  * Created by bush on 20.06.2016.
  */
-public class KafkaProducerNew {
+
+public class KafkaProducerNew implements com.bivgroup.broker.mq.interfaces.Producer<Message> {
 
     @Inject
     @MessageConfigProvider(type = MessageConfigType.KAFKA)
     public Config config;
 
-    private class DemoProducerCallback implements Callback {
-        @Override
-        public void onCompletion(RecordMetadata recordMetadata, Exception e) {
-            if (e != null) {
-                e.printStackTrace();
-            }
-        }
-    }
+
 
     void o() throws ExecutionException, InterruptedException {
-        Properties properties = new Properties();
+
 
         //1
         KafkaProducer<Integer, String> producer1 = new KafkaProducer<Integer,
@@ -60,6 +56,7 @@ public class KafkaProducerNew {
         producer.close();
 
         //3
+        Properties properties = config.getProperties();
         properties.setProperty(PARTITIONER_CLASS, "com.bivgroup.broker.mq.impl.kafka");
         producer1 = new KafkaProducer<Integer,
                 String>(properties);
@@ -75,5 +72,20 @@ public class KafkaProducerNew {
         //4
 
 
+    }
+
+    @Override
+    public void send(Message message) throws MessageException {
+
+    }
+
+    @Override
+    public void close() throws MessageException {
+
+    }
+
+    @Override
+    public String getProducerKey() throws MessageException {
+        return null;
     }
 }
