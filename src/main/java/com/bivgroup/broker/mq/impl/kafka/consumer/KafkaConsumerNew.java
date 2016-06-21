@@ -69,6 +69,7 @@ public class KafkaConsumerNew implements com.bivgroup.broker.mq.interfaces.Consu
 
             final ConsumerIterator<byte[], byte[]> iterator = stream.iterator();
             logger.info(iterator.next().message());
+
             runners.add(
                     executor.submit(new Runnable() {
                         @Override
