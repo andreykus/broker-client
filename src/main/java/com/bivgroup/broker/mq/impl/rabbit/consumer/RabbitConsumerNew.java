@@ -26,37 +26,27 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class RabbitConsumerNew implements com.bivgroup.broker.mq.interfaces.Consumer<Message> {
 
+    static final String EXCHANGE_NAME = "message_in_rabbit";
+    final static String TYPE = "direct";
+    public static long MAX_PAUSE = 1000; // not final for the test
+    private final int readers = 1;
     @Inject
     @MessageConfigProvider(type = MessageProviderType.RABBIT)
     public Config configPr;
-
+    protected Channel channel;
     @Inject
     @LoggerProvider(type = LoggerType.Log4J)
     private transient Logger logger;
-
     private ExecutorService executor;
-
     private volatile boolean running = false;
     private List<Future<?>> runners = new ArrayList<Future<?>>();
-
     private AtomicLong pausedTime = new AtomicLong(0);
-
-    public static long MAX_PAUSE = 1000; // not final for the test
-    private final int readers = 1;
-
-    static final String EXCHANGE_NAME = "message_in_rabbit";
-    final static String TYPE = "direct";
-
     private String host;
     private String port;
     private String nameQueue;
-
     private String nameExchange;
     private Connection connect;
-
     private ConnectionFactory connectFactory;
-    protected Channel channel;
-
 
     private void connect() throws IOException {
         connectFactory = new ConnectionFactory();
@@ -100,7 +90,7 @@ public class RabbitConsumerNew implements com.bivgroup.broker.mq.interfaces.Cons
     }
 
 
-    public void start() throws Exception {
+    public void start() throws MessageException {
 
         executor = Executors.newCachedThreadPool(
                 new ThreadFactoryBuilder().setNameFormat("RabbitConsumer-%d").build());
@@ -136,10 +126,15 @@ public class RabbitConsumerNew implements com.bivgroup.broker.mq.interfaces.Cons
     }
 
     @Override
-    public void shutdown() throws Exception {
-        stop();
-        channel.close();
-        connect.close();
+    public void shutdown() throws MessageException {
+        try {
+            stop();
+            channel.close();
+            connect.close();
+        } catch (IOException e) {
+            throw new MessageException(e);
+        }
+
     }
 
 
@@ -161,7 +156,7 @@ public class RabbitConsumerNew implements com.bivgroup.broker.mq.interfaces.Cons
     }
 
     @Override
-    public void receive() throws Exception {
+    public void receive() throws MessageException {
         start();
     }
 

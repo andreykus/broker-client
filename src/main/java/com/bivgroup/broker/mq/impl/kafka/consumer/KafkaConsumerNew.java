@@ -28,25 +28,21 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class KafkaConsumerNew implements com.bivgroup.broker.mq.interfaces.Consumer<Message> {
 
+    public static long MAX_PAUSE = 1000; // not final for the test
+    private final int readers = 1;
     @Inject
     @MessageConfigProvider(type = MessageProviderType.KAFKA)
     public Config configPr;
-
     @Inject
     @LoggerProvider(type = LoggerType.Log4J)
     private transient Logger logger;
-
     private ExecutorService executor;
     private ConsumerConnector connector;
     private volatile boolean running = false;
     private List<Future<?>> runners = new ArrayList<Future<?>>();
-
     private AtomicLong pausedTime = new AtomicLong(0);
 
-    public static long MAX_PAUSE = 1000; // not final for the test
-    private final int readers = 1;
-
-    public void start() throws Exception {
+    public void start() throws MessageException {
         String topic = "mytesttopic1";
         ConsumerConfig config = new ConsumerConfig(configPr.getProperties());
 
@@ -100,7 +96,7 @@ public class KafkaConsumerNew implements com.bivgroup.broker.mq.interfaces.Consu
     }
 
     @Override
-    public void shutdown() throws Exception {
+    public void shutdown() throws MessageException {
         stop();
         connector.shutdown();
     }
@@ -124,7 +120,7 @@ public class KafkaConsumerNew implements com.bivgroup.broker.mq.interfaces.Consu
     }
 
     @Override
-    public void receive() throws Exception {
+    public void receive() throws MessageException {
         start();
     }
 
