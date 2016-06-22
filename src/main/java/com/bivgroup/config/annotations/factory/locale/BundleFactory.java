@@ -10,6 +10,8 @@ import com.bivgroup.config.annotations.types.LocaleType;
 import com.bivgroup.config.annotations.types.LoggerType;
 import org.apache.logging.log4j.Logger;
 
+import javax.enterprise.inject.Alternative;
+import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 import javax.inject.Inject;
@@ -26,10 +28,19 @@ class BundleFactory {
     private transient Logger logger;
 
     @Produces
+    @Default
     @BundleProvider(type = LocaleType.RU)
     ResourceBundle createResourceBundleRu(InjectionPoint injectionPoint) {
         logger.debug("Bundle for RU");
         return ResourceBundle.getBundle("systemMessages", new Locale("ru", "RU"));
+    }
+
+    @Produces
+    @Alternative
+    @BundleProvider(type = LocaleType.EN)
+    ResourceBundle createResourceBundleEn(InjectionPoint injectionPoint) {
+        logger.debug("Bundle for EN");
+        return ResourceBundle.getBundle("systemMessages", new Locale("en", "EN"));
     }
 
 }
