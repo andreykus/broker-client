@@ -1,10 +1,10 @@
 package com.bivgroup.broker.mq.impl.kafka.producer;
 
 import com.bivgroup.broker.exceptions.MessageException;
-import com.bivgroup.broker.mq.MessageConfigProvider;
-import com.bivgroup.broker.mq.MessageConfigType;
 import com.bivgroup.broker.mq.impl.kafka.producer.callback.DemoProducerCallback;
 import com.bivgroup.broker.mq.interfaces.Message;
+import com.bivgroup.broker.mq.interfaces.annotations.MessageConfigProvider;
+import com.bivgroup.broker.mq.interfaces.annotations.MessageProviderType;
 import com.bivgroup.config.Config;
 import com.bivgroup.config.annotations.LoggerProvider;
 import com.bivgroup.config.annotations.types.LoggerType;
@@ -29,7 +29,7 @@ import static com.bivgroup.broker.mq.impl.kafka.constant.KafkaConstants.PARTITIO
 public class KafkaProducerNew implements com.bivgroup.broker.mq.interfaces.Producer<Message> {
 
     @Inject
-    @MessageConfigProvider(type = MessageConfigType.KAFKA)
+    @MessageConfigProvider(type = MessageProviderType.KAFKA)
     public Config config;
 
     @Inject
@@ -38,23 +38,24 @@ public class KafkaProducerNew implements com.bivgroup.broker.mq.interfaces.Produ
 
     public KafkaProducer<Integer, String> producer;
 
-    public void init() {
+    private void init() {
         KafkaProducer<Integer, String> producer = new KafkaProducer<Integer,
                 String>(config.getProperties());
         this.producer = producer;
     }
 
 
-    void o() throws ExecutionException, InterruptedException {
+    private void sendMessage() throws ExecutionException, InterruptedException, MessageException {
 
         String topic = "mytesttopic1";
-        String mess = "mess";
-
+        String message = "mess";
         init();
 
+
         //1
+        message = "mess 1";
         ProducerRecord<Integer, String> record = new ProducerRecord<Integer,
-                String>(topic, mess);
+                String>(topic, message);
         this.producer.send(record);
 
         RecordMetadata rez = this.producer.send(record).get();
@@ -66,23 +67,25 @@ public class KafkaProducerNew implements com.bivgroup.broker.mq.interfaces.Produ
 
         this.producer.send(record, new DemoProducerCallback());
 
-        this.producer.close();
+        close();
 
+
+        message = "mess 2";
         //2
         Producer<Integer, String> producer1 = new Producer<>(new ProducerConfig(config.getProperties()));
-        KeyedMessage<Integer, String> data = new KeyedMessage<>(topic, mess);
+        KeyedMessage<Integer, String> data = new KeyedMessage<>(topic, message);
         // producer1.send(data);
         producer1.close();
 
         //3
         Properties properties = config.getProperties();
-        properties.setProperty(PARTITIONER_CLASS, "com.bivgroup.broker.mq.impl.kafka");
+        properties.setProperty(PARTITIONER_CLASS, "com.bivgroup.broker.mq.impl.kafka.message.SimplePartitioner");
         this.producer = new KafkaProducer<Integer,
                 String>(properties);
         for (int iCount = 0; iCount < 100; iCount++) {
             int partition = iCount %
                     this.producer.partitionsFor(topic).size();
-            String message = "My Test Message No " + iCount;
+            message = "My Test Message No " + iCount;
             ProducerRecord<Integer, String> record1 = new
                     ProducerRecord<Integer, String>(topic,
                     partition, iCount, message);
@@ -95,12 +98,18 @@ public class KafkaProducerNew implements com.bivgroup.broker.mq.interfaces.Produ
 
     @Override
     public void send(Message message) throws MessageException {
-
+        try {
+            sendMessage();
+        } catch (ExecutionException e) {
+            throw new MessageException(e);
+        } catch (InterruptedException e) {
+            throw new MessageException(e);
+        }
     }
 
     @Override
     public void close() throws MessageException {
-
+        this.producer.close();
     }
 
     @Override

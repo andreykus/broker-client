@@ -1,7 +1,7 @@
 package com.bivgroup.broker.mq.impl.rabbit.config;
 
-import com.bivgroup.broker.mq.MessageConfigProvider;
-import com.bivgroup.broker.mq.MessageConfigType;
+import com.bivgroup.broker.mq.interfaces.annotations.MessageConfigProvider;
+import com.bivgroup.broker.mq.interfaces.annotations.MessageProviderType;
 import com.bivgroup.config.Config;
 import com.bivgroup.config.ConfigFactory;
 import com.bivgroup.config.annotations.LoggerProvider;
@@ -19,6 +19,17 @@ import javax.inject.Singleton;
 @Singleton
 @MessageConfigProvider
 public class RabbitConfigFactory implements ConfigFactory {
+
+    @Inject
+    @LoggerProvider(type = LoggerType.Log4J)
+    private transient Logger logger;
+
+    @Produces
+    @MessageConfigProvider(type = MessageProviderType.RABBIT)
+    Config createRabbitConfig(InjectionPoint injectionPoint) {
+        return getConfig();
+    }
+
     @Override
     public Config getConfig() {
         return new RabbitConfig();
@@ -28,17 +39,5 @@ public class RabbitConfigFactory implements ConfigFactory {
     public void refreshConfig() {
 
     }
-
-
-    @Inject
-    @LoggerProvider(type = LoggerType.Log4J)
-    private transient Logger logger;
-
-    @Produces
-    @MessageConfigProvider(type = MessageConfigType.RABBIT)
-    Config createRabbitConfig(InjectionPoint injectionPoint) {
-        return getConfig();
-    }
-
 
 }

@@ -1,4 +1,6 @@
-package com.bivgroup.broker.mq;
+package com.bivgroup.broker.mq.common;
+
+import com.bivgroup.broker.mq.interfaces.MessageQueue;
 
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;

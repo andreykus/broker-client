@@ -13,6 +13,6 @@ public class KafkaProducerNewTest {
         Weld weld = new Weld();
         WeldContainer weldContainer = weld.initialize();
         KafkaProducerNew mp = weldContainer.instance().select(KafkaProducerNew.class).get();
-        mp.o();
+        mp.send(null);
     }
 }

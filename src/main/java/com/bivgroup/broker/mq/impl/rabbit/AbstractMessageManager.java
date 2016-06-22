@@ -1,6 +1,8 @@
 package com.bivgroup.broker.mq.impl.rabbit;
 
-import com.rabbitmq.client.*;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
 
 import java.io.IOException;
 
@@ -32,55 +34,6 @@ public abstract class AbstractMessageManager {
     private void init() throws IOException {
         host = "";
         port = "";
-    }
-
-    public abstract <T> Boolean sendMessage(T message) throws IOException;
-
-    public abstract Object getMessage() throws IOException;
-
-    public <T> void send(T message) throws IOException {
-        init();
-        connect();
-        sendMessage(message);
-        channel.close();
-        connect.close();
-    }
-
-    public void initReciver() throws IOException {
-        init();
-        connect();
-
-        String queueName = channel.queueDeclare().getQueue();
-
-        channel.queueBind(queueName, EXCHANGE_NAME, String.valueOf(""));
-
-        Consumer consumer = new DefaultConsumer(channel) {
-            @Override
-            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
-                String message = new String(body, "UTF-8");
-                System.out.println(" [x] Received '" + envelope.getRoutingKey() + "':'" + message + "'");
-
-                try {
-
-                    channel.basicAck(envelope.getDeliveryTag(), false);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-        };
-        channel.basicQos(5);
-        channel.basicConsume(queueName, false, consumer);
-    }
-
-    public Object get() throws IOException {
-        init();
-        connect();
-        Object message = getMessage();
-        channel.close();
-        connect.close();
-        return message;
     }
 
 

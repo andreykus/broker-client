@@ -1,7 +1,7 @@
 package com.bivgroup.broker.mq.impl.kafka.config;
 
-import com.bivgroup.broker.mq.MessageConfigProvider;
-import com.bivgroup.broker.mq.MessageConfigType;
+import com.bivgroup.broker.mq.interfaces.annotations.MessageConfigProvider;
+import com.bivgroup.broker.mq.interfaces.annotations.MessageProviderType;
 import com.bivgroup.config.Config;
 import com.bivgroup.config.ConfigFactory;
 
@@ -18,7 +18,7 @@ import javax.inject.Singleton;
 public class KafkaConfigFactory implements ConfigFactory {
 
     @Produces
-    @MessageConfigProvider(type = MessageConfigType.KAFKA)
+    @MessageConfigProvider(type = MessageProviderType.KAFKA)
     Config createKafkaConfig(InjectionPoint injectionPoint) {
         return getConfig();
     }

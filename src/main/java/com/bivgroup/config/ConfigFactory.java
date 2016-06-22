@@ -5,5 +5,6 @@ package com.bivgroup.config;
  */
 public interface ConfigFactory {
     Config getConfig();
+
     void refreshConfig();
 }

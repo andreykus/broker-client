@@ -1,9 +1,9 @@
 package com.bivgroup.broker.mq.impl.kafka.consumer;
 
 import com.bivgroup.broker.exceptions.MessageException;
-import com.bivgroup.broker.mq.Message;
-import com.bivgroup.broker.mq.MessageConfigProvider;
-import com.bivgroup.broker.mq.MessageConfigType;
+import com.bivgroup.broker.mq.common.Message;
+import com.bivgroup.broker.mq.interfaces.annotations.MessageConfigProvider;
+import com.bivgroup.broker.mq.interfaces.annotations.MessageProviderType;
 import com.bivgroup.config.Config;
 import com.bivgroup.config.annotations.LoggerProvider;
 import com.bivgroup.config.annotations.types.LoggerType;
@@ -29,7 +29,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class KafkaConsumerNew implements com.bivgroup.broker.mq.interfaces.Consumer<Message> {
 
     @Inject
-    @MessageConfigProvider(type = MessageConfigType.KAFKA)
+    @MessageConfigProvider(type = MessageProviderType.KAFKA)
     public Config configPr;
 
     @Inject
@@ -83,13 +83,14 @@ public class KafkaConsumerNew implements com.bivgroup.broker.mq.interfaces.Consu
                                         pausedTime.set(0);
                                     }
                                     byte[] message = iterator.next().message();
+                                    logger.info(message);
 //                                    router.process(
 //                                            KafkaConsumerNew.this,
 //                                            new DefaultMessageContainer(new Message(topic, message), jsonMapper));
                                 } catch (ConsumerTimeoutException timeoutException) {
-                                    // do nothing
+                                    logger.error(timeoutException);
                                 } catch (Exception e) {
-                                    //log.error("Exception on consuming kafka with topic: " + topic, e);
+                                    logger.error(e);
                                 }
                             }
                         }
@@ -98,8 +99,8 @@ public class KafkaConsumerNew implements com.bivgroup.broker.mq.interfaces.Consu
         }
     }
 
-
-    public void shutdown() {
+    @Override
+    public void shutdown() throws Exception {
         stop();
         connector.shutdown();
     }
@@ -125,7 +126,6 @@ public class KafkaConsumerNew implements com.bivgroup.broker.mq.interfaces.Consu
     @Override
     public void receive() throws Exception {
         start();
-        shutdown();
     }
 
     @Override

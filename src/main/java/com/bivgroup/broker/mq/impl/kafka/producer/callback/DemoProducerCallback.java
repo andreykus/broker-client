@@ -18,9 +18,9 @@ public class DemoProducerCallback implements Callback {
 
     @Override
     public void onCompletion(RecordMetadata recordMetadata, Exception e) {
-        logger.info(recordMetadata);
+        logger.info("send" + recordMetadata);
         if (e != null) {
-            logger.info(e);
+            logger.info("send err" + e);
             e.printStackTrace();
         }
     }

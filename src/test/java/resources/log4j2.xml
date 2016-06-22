@@ -31,6 +31,10 @@
         </RollingFile>
     </Appenders>
     <Loggers>
+        <Logger name="org.apache.kafka.clients.producer.ProducerConfig" level="debug" additivity="false">
+            <AppenderRef ref="File-Appender" level="debug"/>
+            <AppenderRef ref="RollingFile-Appender" level="debug"/>
+        </Logger>
         <Logger name="com.bivgroup" level="debug" additivity="false">
             <AppenderRef ref="File-Appender" level="debug"/>
             <AppenderRef ref="RollingFile-Appender" level="debug"/>

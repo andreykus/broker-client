@@ -1,4 +1,4 @@
-package com.bivgroup.broker.mq;
+package com.bivgroup.broker.mq.interfaces.annotations;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.Retention;
@@ -13,6 +13,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Qualifier
 @Retention(RUNTIME)
 @Target({METHOD, FIELD, PARAMETER, TYPE})
-public @interface MessageConfigProvider {
-    MessageConfigType type() default MessageConfigType.KAFKA;
+public @interface MessageProvider {
+    MessageProviderType type() default MessageProviderType.KAFKA;
 }

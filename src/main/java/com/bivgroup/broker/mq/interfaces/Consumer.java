@@ -4,6 +4,7 @@ import com.bivgroup.broker.exceptions.MessageException;
 
 public interface Consumer<T> {
 
+    public abstract void shutdown() throws Exception;
 
     public abstract void receive() throws Exception;
 

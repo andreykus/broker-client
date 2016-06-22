@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package com.bivgroup.broker.mq;
+package com.bivgroup.broker.mq.common;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 
-public class Message {
+public class Message implements com.bivgroup.broker.mq.interfaces.Message {
     public static final BiMap<Byte, Class<? extends Message>> classMap = HashBiMap.create();
 
     static {
