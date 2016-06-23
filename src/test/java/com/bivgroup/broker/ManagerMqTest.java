@@ -1,5 +1,6 @@
 package com.bivgroup.broker;
 
+import com.bivgroup.broker.mq.common.DemoMessageProcessor;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
 import org.junit.Before;
@@ -25,11 +26,13 @@ public class ManagerMqTest {
 
     @Test
     public void testSendMessage() throws Exception {
-        mq.sendMessage(null);
+
+        com.bivgroup.broker.mq.interfaces.Message messageIn = new com.bivgroup.broker.mq.common.Message("2", "my test message".getBytes());
+        mq.sendMessage(messageIn);
     }
 
     @Test
     public void testReciveMessage() throws Exception {
-        mq.subscribe();
+        mq.subscribe(new DemoMessageProcessor());
     }
 }

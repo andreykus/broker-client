@@ -15,6 +15,6 @@ public class KafkaConsumerNewTest {
         Weld weld = new Weld();
         WeldContainer weldContainer = weld.initialize();
         KafkaConsumerNew mp = weldContainer.instance().select(KafkaConsumerNew.class).get();
-        mp.receive();
+        //mp.receive(MessageProcessor worker);
     }
 }

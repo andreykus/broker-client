@@ -2,6 +2,7 @@ package com.bivgroup.broker.mq.impl.rabbit.consumer;
 
 import com.bivgroup.broker.exceptions.MessageException;
 import com.bivgroup.broker.mq.common.Message;
+import com.bivgroup.broker.mq.interfaces.MessageProcessor;
 import com.bivgroup.broker.mq.interfaces.annotations.MessageConfigProvider;
 import com.bivgroup.broker.mq.interfaces.annotations.MessageProviderType;
 import com.bivgroup.config.Config;
@@ -30,13 +31,17 @@ public class RabbitConsumerNew implements com.bivgroup.broker.mq.interfaces.Cons
     final static String TYPE = "direct";
     public static long MAX_PAUSE = 1000; // not final for the test
     private final int readers = 1;
+
     @Inject
     @MessageConfigProvider(type = MessageProviderType.RABBIT)
     public Config configPr;
+
     protected Channel channel;
+
     @Inject
     @LoggerProvider(type = LoggerType.Log4J)
     private transient Logger logger;
+
     private ExecutorService executor;
     private volatile boolean running = false;
     private List<Future<?>> runners = new ArrayList<Future<?>>();
@@ -61,7 +66,7 @@ public class RabbitConsumerNew implements com.bivgroup.broker.mq.interfaces.Cons
     }
 
 
-    private void initReciver() throws IOException {
+    private void initReciver(final MessageProcessor worker) throws IOException {
         init();
         connect();
 
@@ -77,6 +82,8 @@ public class RabbitConsumerNew implements com.bivgroup.broker.mq.interfaces.Cons
 
                 try {
 
+                    worker.process(new Message("", body));
+
                     channel.basicAck(envelope.getDeliveryTag(), false);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -90,7 +97,7 @@ public class RabbitConsumerNew implements com.bivgroup.broker.mq.interfaces.Cons
     }
 
 
-    public void start() throws MessageException {
+    public void start(final MessageProcessor worker) throws MessageException {
 
         executor = Executors.newCachedThreadPool(
                 new ThreadFactoryBuilder().setNameFormat("RabbitConsumer-%d").build());
@@ -112,9 +119,8 @@ public class RabbitConsumerNew implements com.bivgroup.broker.mq.interfaces.Cons
                                     pausedTime.set(0);
                                 }
 
-                                initReciver();
+                                initReciver(worker);
                                 //channel.basicGet(EXCHANGE_NAME, true);
-                                byte[] message = {1, 2, 3};
 
                             } catch (Exception e) {
                                 logger.error("Exception on consuming with topic: ", e);
@@ -156,8 +162,8 @@ public class RabbitConsumerNew implements com.bivgroup.broker.mq.interfaces.Cons
     }
 
     @Override
-    public void receive() throws MessageException {
-        start();
+    public void receive(MessageProcessor worker) throws MessageException {
+        start(worker);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.bivgroup.broker.mq.impl.kafka.consumer;
 
 import com.bivgroup.broker.exceptions.MessageException;
 import com.bivgroup.broker.mq.common.Message;
+import com.bivgroup.broker.mq.interfaces.MessageProcessor;
 import com.bivgroup.broker.mq.interfaces.annotations.MessageConfigProvider;
 import com.bivgroup.broker.mq.interfaces.annotations.MessageProviderType;
 import com.bivgroup.config.Config;
@@ -30,19 +31,23 @@ public class KafkaConsumerNew implements com.bivgroup.broker.mq.interfaces.Consu
 
     public static long MAX_PAUSE = 1000; // not final for the test
     private final int readers = 1;
+
     @Inject
     @MessageConfigProvider(type = MessageProviderType.KAFKA)
     public Config configPr;
+
     @Inject
     @LoggerProvider(type = LoggerType.Log4J)
     private transient Logger logger;
+
     private ExecutorService executor;
     private ConsumerConnector connector;
     private volatile boolean running = false;
     private List<Future<?>> runners = new ArrayList<Future<?>>();
     private AtomicLong pausedTime = new AtomicLong(0);
 
-    public void start() throws MessageException {
+
+    public void start(final MessageProcessor worker) throws MessageException {
         String topic = "mytesttopic1";
         ConsumerConfig config = new ConsumerConfig(configPr.getProperties());
 
@@ -61,32 +66,37 @@ public class KafkaConsumerNew implements com.bivgroup.broker.mq.interfaces.Consu
 
         running = true;
         for (KafkaStream<byte[], byte[]> stream : streamList) {
-            logger.info(stream.clientId());
+            logger.info(String.format("ClientID %s", stream.clientId()));
+
 
             final ConsumerIterator<byte[], byte[]> iterator = stream.iterator();
-            logger.info(iterator.next().message());
 
             runners.add(
                     executor.submit(new Runnable() {
                         @Override
                         public void run() {
                             while (running) {
-                                logger.info("calculate message");
+                                logger.info("has message");
                                 try {
                                     long pause = Math.min(pausedTime.get(), MAX_PAUSE);
                                     if (pause > 0) {
                                         Thread.sleep(pause);
                                         pausedTime.set(0);
                                     }
+
                                     byte[] message = iterator.next().message();
+
                                     logger.info(message);
-//                                    router.process(
-//                                            KafkaConsumerNew.this,
-//                                            new DefaultMessageContainer(new Message(topic, message), jsonMapper));
+
+                                    com.bivgroup.broker.mq.interfaces.Message mes = new Message("", message);
+
+                                    //worker.process(mes);
+
+
                                 } catch (ConsumerTimeoutException timeoutException) {
-                                    logger.error(timeoutException);
+
                                 } catch (Exception e) {
-                                    logger.error(e);
+
                                 }
                             }
                         }
@@ -120,8 +130,8 @@ public class KafkaConsumerNew implements com.bivgroup.broker.mq.interfaces.Consu
     }
 
     @Override
-    public void receive() throws MessageException {
-        start();
+    public void receive(MessageProcessor worker) throws MessageException {
+        start(worker);
     }
 
     @Override

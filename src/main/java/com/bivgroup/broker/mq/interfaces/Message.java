@@ -5,4 +5,6 @@ package com.bivgroup.broker.mq.interfaces;
  */
 public interface Message {
 
+    byte[] getPayload();
+
 }

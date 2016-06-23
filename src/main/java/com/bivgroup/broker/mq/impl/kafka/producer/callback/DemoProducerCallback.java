@@ -18,7 +18,7 @@ public class DemoProducerCallback implements Callback {
 
     @Override
     public void onCompletion(RecordMetadata recordMetadata, Exception e) {
-        logger.info("send" + recordMetadata);
+        logger.info(String.format("send message to %1 partititon %2 offset %3", recordMetadata.topic(), recordMetadata.partition(), recordMetadata.offset()));
         if (e != null) {
             logger.info("send err" + e);
             e.printStackTrace();

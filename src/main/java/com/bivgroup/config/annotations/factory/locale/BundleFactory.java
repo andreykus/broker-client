@@ -19,6 +19,7 @@ import javax.inject.Singleton;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+
 @BundleProvider
 @Singleton
 class BundleFactory {

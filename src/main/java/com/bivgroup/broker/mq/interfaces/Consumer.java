@@ -2,11 +2,13 @@ package com.bivgroup.broker.mq.interfaces;
 
 import com.bivgroup.broker.exceptions.MessageException;
 
+/**
+ * @param <T>
+ */
 public interface Consumer<T> {
+    void shutdown() throws MessageException;
 
-    public abstract void shutdown() throws MessageException;
+    void receive(MessageProcessor worker) throws MessageException;
 
-    public abstract void receive() throws MessageException;
-
-    public abstract String getConsumerKey() throws MessageException;
+    String getConsumerKey() throws MessageException;
 }

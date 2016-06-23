@@ -47,6 +47,7 @@ public class Message implements com.bivgroup.broker.mq.interfaces.Message {
         return routingKey;
     }
 
+    @Override
     public byte[] getPayload() {
         return payload;
     }

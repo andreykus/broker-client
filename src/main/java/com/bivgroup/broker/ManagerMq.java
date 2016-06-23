@@ -1,8 +1,9 @@
 package com.bivgroup.broker;
 
 import com.bivgroup.broker.exceptions.MessageException;
-import com.bivgroup.broker.mq.common.Message;
 import com.bivgroup.broker.mq.interfaces.Consumer;
+import com.bivgroup.broker.mq.interfaces.Message;
+import com.bivgroup.broker.mq.interfaces.MessageProcessor;
 import com.bivgroup.broker.mq.interfaces.Producer;
 import com.bivgroup.broker.mq.interfaces.annotations.MessageProvider;
 
@@ -23,11 +24,11 @@ public class ManagerMq {
     private Consumer consumer;
 
     public void sendMessage(Message mes) throws MessageException {
-        producer.send(null);
+        producer.send(mes);
     }
 
-    public void subscribe() throws MessageException {
-        consumer.receive();
+    public void subscribe(MessageProcessor worker) throws MessageException {
+        consumer.receive(worker);
     }
 
 }

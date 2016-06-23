@@ -9,13 +9,12 @@ import com.bivgroup.broker.exceptions.MessageException;
  */
 public interface ConsumerFactory {
 
-    public <T> void addConsumer(Consumer<T> consumer) throws MessageException;
+    <T> void addConsumer(Consumer<T> consumer) throws MessageException;
 
+    <T> Consumer<T> getConsumer(String consumerKey) throws MessageException;
 
-    public <T> Consumer<T> getConsumer(String consumerKey) throws MessageException;
+    void init() throws MessageException;
 
-    public void init() throws MessageException;
-
-    public void destroy() throws MessageException;
+    void destroy() throws MessageException;
 
 }

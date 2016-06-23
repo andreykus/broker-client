@@ -9,11 +9,11 @@ import com.bivgroup.broker.exceptions.MessageException;
  */
 public interface ProducerFactory {
 
-    public <T> void addProducer(Producer<T> producer) throws MessageException;
+    <T> void addProducer(Producer<T> producer) throws MessageException;
 
-    public <T> Producer<T> getProducer(String producerKey) throws MessageException;
+    <T> Producer<T> getProducer(String producerKey) throws MessageException;
 
-    public void init() throws MessageException;
+    void init() throws MessageException;
 
-    public void destroy() throws MessageException;
+    void destroy() throws MessageException;
 }

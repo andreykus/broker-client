@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public interface MessageQueue {
+
     boolean offer(com.bivgroup.broker.mq.common.Message msg);
 
     Message poll(long timeout, TimeUnit timeUnit) throws InterruptedException;
