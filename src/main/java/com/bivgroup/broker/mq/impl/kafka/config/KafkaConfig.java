@@ -12,13 +12,25 @@ import java.util.Properties;
 
 /**
  * Created by bush on 20.06.2016.
+ * Класс создания конфигурации
  */
 
 public class KafkaConfig implements Config {
+
+    /**
+     * Свойства конфигурации
+     * на их основе создается ProducerConfig , ConsumerConfig
+     *
+     * @see kafka.producer.ProducerConfig
+     * @see kafka.consumer.ConsumerConfig
+     */
     Properties prop;
 
-    private void setMyReporter() {
-        prop.put("metric.reporters", Lists.newArrayList(MonitorKafka.class.getName()));
+    /**
+     * Добавим конфигурацию мониторинга
+     */
+    private void addMyReporterToProducerConfig() {
+        prop.put(KafkaConstants.METRIC_REPORTERS, Lists.newArrayList(MonitorKafka.class.getName()));
         // this should be needed because ProducerConfig cannot retrieve undefined key
         try {
             Field f = kafka.producer.ProducerConfig.class.getDeclaredField("config");
@@ -27,9 +39,7 @@ public class KafkaConfig implements Config {
             config.define(MonitorKafka.class.getName(), ConfigDef.Type.CLASS, MonitorKafka.class, ConfigDef.Importance.LOW, "");
         } catch (Exception e) {
         }
-
     }
-
 
     @Override
     public Properties getProperties() {
@@ -38,14 +48,14 @@ public class KafkaConfig implements Config {
             //producer for consumer
             this.prop.setProperty(KafkaConstants.BROKER_LIST, "localhost:9092");
             this.prop.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-            this.prop.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");//ByteArraySerializer
-            this.prop.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "com.bivgroup.broker.mq.impl.kafka.serialization.IntegerSerializer");
+            this.prop.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaConstants.STRING_SERIALIZER);
+            this.prop.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, KafkaConstants.INTEGER_SERIALIZER);
             //require for consumer
             this.prop.setProperty(KafkaConstants.ZOOKEEPER_LIST, "localhost:2181");
             this.prop.setProperty(org.apache.kafka.clients.consumer.ConsumerConfig.GROUP_ID_CONFIG, "test");
-        }
 
-        setMyReporter();
+        }
+        addMyReporterToProducerConfig();
         return prop;
     }
 

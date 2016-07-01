@@ -5,6 +5,7 @@ package com.bivgroup.config.annotations.factory.property;
  */
 
 import com.bivgroup.broker.exceptions.MessageException;
+import com.bivgroup.config.annotations.BundleProvider;
 import com.bivgroup.config.annotations.LoggerProvider;
 import com.bivgroup.config.annotations.PropertyProvider;
 import com.bivgroup.config.annotations.types.LoggerType;
@@ -18,6 +19,7 @@ import javax.inject.Singleton;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 
 @Singleton
@@ -26,6 +28,10 @@ class PropertyFactory {
     @Inject
     @LoggerProvider(type = LoggerType.Log4J)
     private transient Logger logger;
+
+    @Inject
+    @BundleProvider
+    private ResourceBundle bundle;
 
     @Produces
     @PropertyProvider(type = PropertyFiles.EXT)
@@ -50,8 +56,8 @@ class PropertyFactory {
         try {
             input = getClass().getClassLoader().getResourceAsStream(fileName);
             if (input == null) {
-                logger.error(String.format("provider: %s file not found", fileName));
-                throw new MessageException(String.format("provider: %s file not found", fileName));
+                logger.error(String.format(bundle.getString("message.property.file.not.found"), fileName));
+                throw new MessageException(String.format(bundle.getString("message.property.file.not.found"), fileName));
             }
             prop.load(input);
         } catch (IOException ex) {

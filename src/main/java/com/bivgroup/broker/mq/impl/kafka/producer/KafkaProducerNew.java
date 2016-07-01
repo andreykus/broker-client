@@ -5,6 +5,7 @@ import com.bivgroup.broker.mq.interfaces.Message;
 import com.bivgroup.broker.mq.interfaces.annotations.MessageConfigProvider;
 import com.bivgroup.broker.mq.interfaces.annotations.MessageProviderType;
 import com.bivgroup.config.Config;
+import com.bivgroup.config.annotations.BundleProvider;
 import com.bivgroup.config.annotations.LoggerProvider;
 import com.bivgroup.config.annotations.types.LoggerType;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -16,6 +17,7 @@ import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -31,6 +33,9 @@ public class KafkaProducerNew implements com.bivgroup.broker.mq.interfaces.Produ
     @Inject
     @LoggerProvider(type = LoggerType.Log4J)
     private transient Logger logger;
+    @Inject
+    @BundleProvider
+    private ResourceBundle bundle;
 
     private void init() {
         KafkaProducer<Integer, String> producer = new KafkaProducer<Integer,
@@ -41,14 +46,18 @@ public class KafkaProducerNew implements com.bivgroup.broker.mq.interfaces.Produ
 
     }
 
-    private void onStart() {
+    private void printMetricOnStart() {
         Map<MetricName, ? extends Metric> metrics = producer.metrics();
         StringBuilder sb = new StringBuilder();
         // add kafka producer stats, which are rates
         for (Map.Entry<MetricName, ? extends Metric> e : metrics.entrySet()) {
-            sb.append("kafka.").append(e.getKey()).append(": ").append(e.getValue().value()).append('\n');
+            sb.append("kafka.metric").append(e.getKey()).append(": ").append(e.getValue().value()).append('\n');
         }
-        logger.info(String.format("Metriks: %s", sb));
+        logger.debug(String.format(bundle.getString("message.kafka.metric.on.start"), sb));
+    }
+
+    private void onStart() {
+        printMetricOnStart();
     }
 
 
@@ -64,7 +73,7 @@ public class KafkaProducerNew implements com.bivgroup.broker.mq.interfaces.Produ
         ProducerRecord<Integer, String> record = new ProducerRecord<Integer,
                 String>(topic, messageIn.getPayload().toString());
 
-        logger.info(String.format("Send message %s", messageIn.getPayload().toString()));
+        logger.debug(String.format("Send message %s", messageIn.getPayload().toString()));
         RecordMetadata rez = this.producer.send(record).get();
 
         //        RecordMetadata rez = this.producer.send(record).get();

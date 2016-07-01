@@ -15,7 +15,7 @@ public class DemoMessageProcessor implements MessageProcessor<com.bivgroup.broke
 
     @Override
     public void process(com.bivgroup.broker.mq.interfaces.Message mes) throws MessageException {
-        logger.info(String.format("Message worker: %s", mes.getPayload()));
+        logger.debug(String.format("Message worker: %s", mes.getPayload()));
     }
 
 }

@@ -102,7 +102,7 @@ public class RabbitConsumerNew implements com.bivgroup.broker.mq.interfaces.Cons
         executor = Executors.newCachedThreadPool(
                 new ThreadFactoryBuilder().setNameFormat("RabbitConsumer-%d").build());
 
-        logger.info("start recive message");
+        logger.debug("start recive message");
 
         running = true;
 
@@ -111,7 +111,7 @@ public class RabbitConsumerNew implements com.bivgroup.broker.mq.interfaces.Cons
                     @Override
                     public void run() {
                         while (running) {
-                            logger.info("calculate message");
+                            logger.debug("calculate message");
                             try {
                                 long pause = Math.min(pausedTime.get(), MAX_PAUSE);
                                 if (pause > 0) {

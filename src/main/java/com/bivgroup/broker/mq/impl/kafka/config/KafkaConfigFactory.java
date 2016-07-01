@@ -11,6 +11,7 @@ import javax.inject.Singleton;
 
 /**
  * Created by bush on 20.06.2016.
+ * Фабрика создания конфига для брокера Kafka
  */
 
 @Singleton
@@ -20,6 +21,7 @@ public class KafkaConfigFactory implements ConfigFactory {
     @Produces
     @MessageConfigProvider(type = MessageProviderType.KAFKA)
     Config createKafkaConfig(InjectionPoint injectionPoint) {
+        refreshConfig();
         return getConfig();
     }
 

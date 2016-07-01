@@ -6,7 +6,15 @@ package com.bivgroup.broker.mq.impl.kafka.constant;
  * <p>Description: </p>
  */
 public interface KafkaConstants {
+
+    String METRIC_REPORTERS = "metric.reporters";
+
     //compression.codec,key.serializer.class,batch.num.messages
+    String STRING_SERIALIZER = "org.apache.kafka.common.serialization.StringSerializer";
+    String INTEGER_SERIALIZER = "com.bivgroup.broker.mq.impl.kafka.serialization.IntegerSerializer";
+    //ByteArraySerializer
+
+
 
     //Список брокеров
     String BROKER_LIST = "metadata.broker.list";
