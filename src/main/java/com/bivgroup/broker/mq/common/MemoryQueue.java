@@ -8,7 +8,9 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 
-
+/**
+ * Очередь сообщений в памяти на основе блокирующей очереди
+ */
 public class MemoryQueue implements MessageQueue {
 
     private final BlockingQueue<Message> queue;

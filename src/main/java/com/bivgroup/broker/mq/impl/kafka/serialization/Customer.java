@@ -1,4 +1,4 @@
-package com.bivgroup.broker.mq.impl.kafka.message;
+package com.bivgroup.broker.mq.impl.kafka.serialization;
 
 /**
  * Created by bush on 20.06.2016.

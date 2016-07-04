@@ -22,6 +22,7 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * Created by bush on 20.06.2016.
+ * Отправка сообщения KAFKA
  */
 
 public class KafkaProducerNew implements com.bivgroup.broker.mq.interfaces.Producer<Message> {
@@ -73,7 +74,7 @@ public class KafkaProducerNew implements com.bivgroup.broker.mq.interfaces.Produ
         ProducerRecord<Integer, String> record = new ProducerRecord<Integer,
                 String>(topic, messageIn.getPayload().toString());
 
-        logger.debug(String.format("Send message %s", messageIn.getPayload().toString()));
+        logger.debug(String.format(bundle.getString("message.kafka.send.message="), messageIn.getPayload().toString()));
         RecordMetadata rez = this.producer.send(record).get();
 
         //        RecordMetadata rez = this.producer.send(record).get();

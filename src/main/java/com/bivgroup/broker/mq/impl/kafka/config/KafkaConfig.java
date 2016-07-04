@@ -24,7 +24,7 @@ public class KafkaConfig implements Config {
      * @see kafka.producer.ProducerConfig
      * @see kafka.consumer.ConsumerConfig
      */
-    Properties prop;
+    private Properties prop;
 
     /**
      * Добавим конфигурацию мониторинга

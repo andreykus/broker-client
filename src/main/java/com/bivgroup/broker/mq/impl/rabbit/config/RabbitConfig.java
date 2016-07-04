@@ -9,7 +9,7 @@ import java.util.Properties;
  */
 
 public class RabbitConfig implements Config {
-    Properties prop;
+    private Properties prop;
 
     @Override
     public Properties getProperties() {

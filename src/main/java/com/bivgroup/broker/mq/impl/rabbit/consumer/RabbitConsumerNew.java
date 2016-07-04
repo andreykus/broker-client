@@ -6,6 +6,7 @@ import com.bivgroup.broker.mq.interfaces.MessageProcessor;
 import com.bivgroup.broker.mq.interfaces.annotations.MessageConfigProvider;
 import com.bivgroup.broker.mq.interfaces.annotations.MessageProviderType;
 import com.bivgroup.config.Config;
+import com.bivgroup.config.annotations.BundleProvider;
 import com.bivgroup.config.annotations.LoggerProvider;
 import com.bivgroup.config.annotations.types.LoggerType;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
@@ -16,6 +17,7 @@ import javax.inject.Inject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -35,13 +37,13 @@ public class RabbitConsumerNew implements com.bivgroup.broker.mq.interfaces.Cons
     @Inject
     @MessageConfigProvider(type = MessageProviderType.RABBIT)
     public Config configPr;
-
     protected Channel channel;
-
     @Inject
     @LoggerProvider(type = LoggerType.Log4J)
     private transient Logger logger;
-
+    @Inject
+    @BundleProvider
+    private ResourceBundle bundle;
     private ExecutorService executor;
     private volatile boolean running = false;
     private List<Future<?>> runners = new ArrayList<Future<?>>();
@@ -100,7 +102,7 @@ public class RabbitConsumerNew implements com.bivgroup.broker.mq.interfaces.Cons
     public void start(final MessageProcessor worker) throws MessageException {
 
         executor = Executors.newCachedThreadPool(
-                new ThreadFactoryBuilder().setNameFormat("RabbitConsumer-%d").build());
+                new ThreadFactoryBuilder().setNameFormat(bundle.getString("message.kafka.rabbit.thread")).build());
 
         logger.debug("start recive message");
 

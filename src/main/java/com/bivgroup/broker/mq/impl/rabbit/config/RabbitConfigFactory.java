@@ -4,13 +4,9 @@ import com.bivgroup.broker.mq.interfaces.annotations.MessageConfigProvider;
 import com.bivgroup.broker.mq.interfaces.annotations.MessageProviderType;
 import com.bivgroup.config.Config;
 import com.bivgroup.config.ConfigFactory;
-import com.bivgroup.config.annotations.LoggerProvider;
-import com.bivgroup.config.annotations.types.LoggerType;
-import org.apache.logging.log4j.Logger;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
-import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
@@ -19,10 +15,6 @@ import javax.inject.Singleton;
 @Singleton
 @MessageConfigProvider
 public class RabbitConfigFactory implements ConfigFactory {
-
-    @Inject
-    @LoggerProvider(type = LoggerType.Log4J)
-    private transient Logger logger;
 
     @Produces
     @MessageConfigProvider(type = MessageProviderType.RABBIT)

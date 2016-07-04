@@ -5,6 +5,7 @@ import com.bivgroup.broker.mq.interfaces.Message;
 import com.bivgroup.broker.mq.interfaces.annotations.MessageConfigProvider;
 import com.bivgroup.broker.mq.interfaces.annotations.MessageProviderType;
 import com.bivgroup.config.Config;
+import com.bivgroup.config.annotations.BundleProvider;
 import com.bivgroup.config.annotations.LoggerProvider;
 import com.bivgroup.config.annotations.types.LoggerType;
 import com.rabbitmq.client.Channel;
@@ -14,41 +15,40 @@ import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 /**
  * Created by bush on 20.06.2016.
+ * Отправка сообщения RABIT
  */
 
 public class RabbitProducerNew implements com.bivgroup.broker.mq.interfaces.Producer<Message> {
-    final static String mess = "rabbit message";
+
     static final String EXCHANGE_NAME = "message_in_rabbit";
     final static String TYPE = "direct";
     private static final String ROUTING_KEY = "1";
-
-    private String host;
-    private String port;
-    private String nameQueue;
-
-    private String nameExchange;
-    private Connection connect;
-
-    private ConnectionFactory connectFactory;
-    protected Channel channel;
-
-
     @Inject
     @MessageConfigProvider(type = MessageProviderType.RABBIT)
     public Config config;
-
+    protected Channel channel;
+    private String host;
+    private String port;
+    private String nameQueue;
+    private String nameExchange;
+    private Connection connect;
+    private ConnectionFactory connectFactory;
     @Inject
     @LoggerProvider(type = LoggerType.Log4J)
     private transient Logger logger;
+    @Inject
+    @BundleProvider
+    private ResourceBundle bundle;
 
 
     private void sendMessage(Message message) throws MessageException {
         try {
             channel.exchangeDeclare(EXCHANGE_NAME, TYPE);
-            channel.basicPublish(EXCHANGE_NAME, ROUTING_KEY, null, mess.toString().getBytes());
+            channel.basicPublish(EXCHANGE_NAME, ROUTING_KEY, null, message.getPayload());
         } catch (IOException e) {
             throw new MessageException(e);
         }
