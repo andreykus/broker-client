@@ -2,6 +2,7 @@ package com.bivgroup.broker.exceptions;
 
 /**
  * Created by bush on 12.05.2016.
+ * Исключение менеджера работы с сообщениями
  */
 
 public class MessageException extends Exception {

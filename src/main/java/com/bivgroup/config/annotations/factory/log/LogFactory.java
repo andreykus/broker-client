@@ -2,6 +2,7 @@ package com.bivgroup.config.annotations.factory.log;
 
 /**
  * Created by bush on 12.05.2016.
+ * Фабрика лога
  */
 
 import com.bivgroup.config.annotations.LoggerProvider;
@@ -18,7 +19,6 @@ class LogFactory {
     @LoggerProvider(type = LoggerType.Log4J)
     Logger createLoggerLog4J(InjectionPoint injectionPoint) {
         return LogManager.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
-
     }
 
 }

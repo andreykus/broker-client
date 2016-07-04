@@ -2,6 +2,7 @@ package com.bivgroup.config.annotations.factory.locale;
 
 /**
  * Created by bush on 12.05.2016.
+ * Фабрика бандла
  */
 
 import com.bivgroup.config.annotations.BundleProvider;

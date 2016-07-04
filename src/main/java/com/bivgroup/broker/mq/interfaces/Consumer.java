@@ -3,6 +3,7 @@ package com.bivgroup.broker.mq.interfaces;
 import com.bivgroup.broker.exceptions.MessageException;
 
 /**
+ * Потребитель сообщения
  * @param <T>
  */
 public interface Consumer<T> {

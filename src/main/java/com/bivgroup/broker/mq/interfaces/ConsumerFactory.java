@@ -3,10 +3,7 @@ package com.bivgroup.broker.mq.interfaces;
 
 import com.bivgroup.broker.exceptions.MessageException;
 
-/**
- * <p>Title: ConsumerFactory</p>
- * <p>Description: </p>
- */
+
 public interface ConsumerFactory {
 
     <T> void addConsumer(Consumer<T> consumer) throws MessageException;

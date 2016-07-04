@@ -25,6 +25,9 @@ import java.io.IOException;
 import java.util.Arrays;
 
 
+/**
+ * Сообщение
+ */
 public class Message implements com.bivgroup.broker.mq.interfaces.Message {
     public static final BiMap<java.lang.Byte, Class<Message>> classMap = HashBiMap.create();
 

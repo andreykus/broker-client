@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
+/**
+ * Очередь сообщений
+ */
 public interface MessageQueue {
 
     boolean offer(com.bivgroup.broker.mq.common.Message msg);

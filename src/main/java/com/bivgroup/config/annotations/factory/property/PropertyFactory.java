@@ -2,6 +2,7 @@ package com.bivgroup.config.annotations.factory.property;
 
 /**
  * Created by bush on 12.05.2016.
+ * Фабрика совойств
  */
 
 import com.bivgroup.broker.exceptions.MessageException;
@@ -37,14 +38,12 @@ class PropertyFactory {
     @PropertyProvider(type = PropertyFiles.EXT)
     Properties createPropertyExt(InjectionPoint injectionPoint) throws MessageException {
         return getProperties(PropertyFiles.EXT.getFileName());
-
     }
 
     @Produces
     @PropertyProvider(type = PropertyFiles.IN)
     Properties createPropertyIn(InjectionPoint injectionPoint) throws MessageException {
         return getProperties(PropertyFiles.IN.getFileName());
-
     }
 
     /**

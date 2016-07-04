@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 /**
  * Created by bush on 22.06.2016.
+ * Менеджер сообщение
  */
 
 public class ManagerMq {
@@ -23,10 +24,21 @@ public class ManagerMq {
     @MessageProvider
     private Consumer consumer;
 
+    /**
+     * Отослать сообщение
+     *
+     * @param mes
+     * @throws MessageException
+     */
     public void sendMessage(Message mes) throws MessageException {
         producer.send(mes);
     }
 
+    /**
+     * Оформить подписку на сообщения
+     * @param worker
+     * @throws MessageException
+     */
     public void subscribe(MessageProcessor worker) throws MessageException {
         consumer.receive(worker);
     }

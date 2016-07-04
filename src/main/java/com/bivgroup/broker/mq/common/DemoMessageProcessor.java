@@ -7,8 +7,8 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * Created by bush on 23.06.2016.
+ * Обработчик сообщения
  */
-
 public class DemoMessageProcessor implements MessageProcessor<com.bivgroup.broker.mq.interfaces.Message> {
 
     private transient Logger logger = LogManager.getLogger(this.getClass().getName());
