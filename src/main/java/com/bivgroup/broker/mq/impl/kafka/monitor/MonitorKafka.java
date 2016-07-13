@@ -23,17 +23,14 @@ import java.util.concurrent.TimeUnit;
  */
 public class MonitorKafka implements MetricsReporter, Runnable {
 
+    private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor(
+            new ThreadFactoryBuilder().setDaemon(false).setNameFormat("KafkaMetricReporter-%d").build());
     @Inject
     @LoggerProvider(type = LoggerType.Log4J)
     private transient Logger logger;
-
     @Inject
     @BundleProvider
     private ResourceBundle bundle;
-
-    private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor(
-            new ThreadFactoryBuilder().setDaemon(false).setNameFormat(bundle.getString("message.kafka.metric.thread")).build());
-
     private List<KafkaMetric> metricList = Collections.synchronizedList(new ArrayList<KafkaMetric>());
 
     private MyConfig config;

@@ -74,7 +74,8 @@ public class KafkaProducerNew implements com.bivgroup.broker.mq.interfaces.Produ
         ProducerRecord<Integer, String> record = new ProducerRecord<Integer,
                 String>(topic, messageIn.getPayload().toString());
 
-        logger.debug(String.format(bundle.getString("message.kafka.send.message="), messageIn.getPayload().toString()));
+        logger.debug(String.format(bundle.getString("message.kafka.send.message"), messageIn.getPayload().toString()));
+
         RecordMetadata rez = this.producer.send(record).get();
 
         //        RecordMetadata rez = this.producer.send(record).get();
@@ -85,8 +86,6 @@ public class KafkaProducerNew implements com.bivgroup.broker.mq.interfaces.Produ
         //                        + rez.topic());
         //
         //        this.producer.send(record, new DemoProducerCallback());
-
-        close();
 
 
         //        message = "mess 2";
@@ -124,6 +123,8 @@ public class KafkaProducerNew implements com.bivgroup.broker.mq.interfaces.Produ
             throw new MessageException(e);
         } catch (InterruptedException e) {
             throw new MessageException(e);
+        } finally {
+            close();
         }
     }
 

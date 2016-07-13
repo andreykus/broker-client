@@ -1,3 +1,0 @@
-[INFO ] 2016-06-21 16:04:08.057 [main] KafkaConsumerNew - start recive message
-[INFO ] 2016-06-21 16:04:08.065 [main] KafkaConsumerNew - test
-[INFO ] 2016-06-22 09:37:33.392 [main] KafkaProducerNew - 0:825:mytesttopic1
