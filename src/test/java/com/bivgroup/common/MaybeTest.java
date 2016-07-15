@@ -1,7 +1,7 @@
 package com.bivgroup.common;
 
-import com.bivgroup.common.interfaces.Function;
-import com.bivgroup.common.interfaces.Maybe;
+import com.bivgroup.common.monad.Function;
+import com.bivgroup.common.monad.Maybe;
 import junit.framework.TestCase;
 import org.junit.Assert;
 

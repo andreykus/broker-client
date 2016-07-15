@@ -1,4 +1,4 @@
-package com.bivgroup.common.interfaces;
+package com.bivgroup.common.monad;
 
 import java.util.NoSuchElementException;
 

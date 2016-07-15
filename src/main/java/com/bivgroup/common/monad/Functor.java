@@ -1,4 +1,4 @@
-package com.bivgroup.common.interfaces;
+package com.bivgroup.common.monad;
 
 /**
  * Created by bush on 15.07.2016.
