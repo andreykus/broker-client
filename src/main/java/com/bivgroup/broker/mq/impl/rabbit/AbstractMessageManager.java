@@ -10,19 +10,16 @@ import java.io.IOException;
  * Created by bush on 14.10.2015.
  */
 public abstract class AbstractMessageManager {
+
     static final String EXCHANGE_NAME = "message_in_rabbit";
     final static String TYPE = "direct";
-
+    protected Channel channel;
     private String host;
     private String port;
     private String nameQueue;
-
     private String nameExchange;
     private Connection connect;
-
     private ConnectionFactory connectFactory;
-    protected Channel channel;
-
 
     private void connect() throws IOException {
         connectFactory = new ConnectionFactory();

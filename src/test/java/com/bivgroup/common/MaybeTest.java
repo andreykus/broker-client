@@ -14,23 +14,25 @@ import java.util.List;
 public class MaybeTest extends TestCase {
 
     public void testMap() throws Exception {
-        String s = new String("111ddssdsd23333");
+        String s = null;
         Maybe<String> trst =
-                Maybe.instance(s).map(new Function<String, List<String>>() {
-                                          public List<String> apply(String s) {
-                                              return Arrays.asList(s.split("s"));
-                                          }
-                                      }
-                ).map(new Function<List<String>, String>() {
-                          public String apply(List<String> s) {
-                              StringBuilder sb = new StringBuilder();
-                              for (String ss : s) {
-                                  sb.append(ss);
-                              }
-                              return sb.toString();
-                          }
-                      }
-                );
+                Maybe.instance(s)
+                        .map(new Function<String, List<String>>() {
+                                 public List<String> apply(String s) {
+                                     return Arrays.asList(s.split("s1"));
+                                 }
+                             }
+                        )
+                        .map(new Function<List<String>, String>() {
+                                 public String apply(List<String> s) {
+                                     StringBuilder sb = new StringBuilder();
+                                     for (String ss : s) {
+                                         sb.append(ss);
+                                     }
+                                     return sb.toString();
+                                 }
+                             }
+                        );
         Assert.assertEquals(trst.get(), "111dddd23333");
 
     }
